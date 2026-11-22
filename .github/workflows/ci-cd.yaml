@@ -1,17 +1,29 @@
-name: ShopApp CD
+name: ShopApp CI/CD
 
 on:
-  workflow_run:
-    workflows: ["ShopApp CI"]
-    types:
-      - completed
+  push:
+    branches:
+      - main
+  pull_request:
     branches:
       - main
 
 jobs:
+  build:
+    name: CI - Build Docker Image
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t shopapp:ci .
+
   deploy:
-    name: Deploy ShopApp
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    name: CD - Deploy ShopApp
+    needs: build
+    if: github.event_name == 'push'
     runs-on: [self-hosted, Linux, X64]
 
     steps:

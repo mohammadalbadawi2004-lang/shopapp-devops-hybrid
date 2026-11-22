@@ -1,0 +1,26 @@
+name: ShopApp CD
+
+on:
+  workflow_run:
+    workflows: ["ShopApp CI"]
+    types:
+      - completed
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy ShopApp
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: [self-hosted, Linux, X64]
+
+    steps:
+      - name: Update deployment repository
+        run: |
+          cd /home/mohammad/shopapp-devops-hybrid
+          git pull --ff-only origin main
+
+      - name: Deploy with Docker Compose
+        run: |
+          cd /home/mohammad/shopapp-devops-hybrid
+          docker compose up -d --build

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopApp</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background: #222;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        .products {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .product {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            flex: 1;
+            min-width: 180px;
+            text-align: center;
+        }
+
+        .price {
+            color: #16803c;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ShopApp</h1>
+        <p>Simple Online Shopping</p>
+    </header>
+
+    <main>
+        <h2>Our Products</h2>
+
+        <div class="products">
+            <div class="product">
+                <h3>Laptop</h3>
+                <p class="price">$750</p>
+            </div>
+
+            <div class="product">
+                <h3>Keyboard</h3>
+                <p class="price">$45</p>
+            </div>
+
+            <div class="product">
+                <h3>Mouse</h3>
+                <p class="price">$20</p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

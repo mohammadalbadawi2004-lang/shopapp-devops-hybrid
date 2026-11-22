@@ -1,0 +1,8 @@
+services:
+  shopapp:
+    build: .
+    image: shopapp:1.1
+    container_name: shopapp-hybrid
+    ports:
+      - "8081:80"
+    restart: unless-stopped
